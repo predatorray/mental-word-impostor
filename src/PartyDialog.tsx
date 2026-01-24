@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Button, Dialog, Typography} from "@mui/material";
 import CircularPlayerAvatarStack from "./CircularPlayerAvatarStack";
-import {t} from "./i18n/translations";
+import {useT} from "./i18n/useLangContext";
 
 export default function PartyDialog(props: {
   open: boolean;
@@ -9,6 +9,7 @@ export default function PartyDialog(props: {
   joinedPlayers: string[];
   playingPlayers: string[];
 }) {
+  const t = useT();
   return (
     <Dialog
       open={props.open}

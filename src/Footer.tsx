@@ -1,8 +1,9 @@
 import React from "react";
 import {Container, Divider, Link, Stack, Typography} from "@mui/material";
-import {t} from "./i18n/translations";
+import {useT} from "./i18n/useLangContext";
 
 export const Footer = () => {
+  const t = useT();
   return (
     <Container component="footer" maxWidth="sm" sx={{ py: 1, height: 72 }}>
       <Typography variant="h5" component="div" sx={{

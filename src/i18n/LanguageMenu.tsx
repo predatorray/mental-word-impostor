@@ -2,8 +2,7 @@ import React from 'react';
 import {ListItemIcon, ListItemText, MenuList, MenuItem, Typography, Menu, MenuProps} from "@mui/material";
 import CountryFlag from "./CountryFlag";
 import {SupportedLanguages} from "./translations.type";
-import useLangContext from "./useLangContext";
-import {t} from "./translations";
+import useLangContext, {useT} from "./useLangContext";
 
 const langs: { [K in SupportedLanguages]?: { code: string } } = {
   'en-US': {
@@ -25,6 +24,7 @@ export default function LanguageMenu(props: {
   arioLabelledBy?: string,
 }) {
   const { lang: currentLang, setLang } = useLangContext();
+  const t = useT();
 
   return (
     <Menu

@@ -1,9 +1,10 @@
 import React from "react";
 import {Box, Button, Container} from "@mui/material";
 import WordCard from "./WordCard";
-import {t} from "./i18n/translations";
+import {useT} from "./i18n/useLangContext";
 
 export default function GameTable() {
+  const t = useT();
   const words = t('words');
   const word = words[Math.floor(Math.random() * words.length)];
   return <Container component="main" maxWidth="sm" sx={{

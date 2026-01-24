@@ -1,10 +1,11 @@
 import React from "react";
 import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
-import {t} from "./i18n/translations";
+import {useT} from "./i18n/useLangContext";
 
 export default function WordCard(props: {
   word?: string;
 }) {
+  const t = useT();
   const rotateDegree = Math.random() * 2 - 1;
   return (
     <Card elevation={8} sx={{
