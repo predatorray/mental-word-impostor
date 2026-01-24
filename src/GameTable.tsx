@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {Box, Button, Container} from "@mui/material";
 import WordCard from "./WordCard";
 import {useT} from "./i18n/useLangContext";
@@ -6,7 +6,8 @@ import {useT} from "./i18n/useLangContext";
 export default function GameTable() {
   const t = useT();
   const words = t('words');
-  const word = words[Math.floor(Math.random() * words.length)];
+  const offset = useMemo(() => Math.floor(Math.random() * words.length), [words.length]);
+  const word = useMemo(() => words[offset], [words, offset]);
   return <Container component="main" maxWidth="sm" sx={{
     display: "flex",
     flexDirection: "column",

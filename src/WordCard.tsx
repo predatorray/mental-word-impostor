@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
 import {useT} from "./i18n/useLangContext";
 
@@ -6,7 +6,7 @@ export default function WordCard(props: {
   word?: string;
 }) {
   const t = useT();
-  const rotateDegree = Math.random() * 2 - 1;
+  const rotateDegree = useMemo(() => Math.random() * 2 - 1, []);
   return (
     <Card elevation={8} sx={{
       display: "flex",
