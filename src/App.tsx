@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useMemo, useState} from 'react';
 import './App.css';
+import {Footer} from "./Footer";
+import GameTable from "./GameTable";
+import { LangContext } from "./i18n/useLangContext";
+import {Menu} from "./Menu";
+import {DEFAULT_LOCALE} from "./i18n/translations";
+import {SupportedLanguages} from "./i18n/translations.type";
 
 function App() {
+  const [lang, setLang] = useState<SupportedLanguages>(DEFAULT_LOCALE);
+  const value = useMemo(() => ({ lang, setLang }), [lang]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LangContext.Provider value={value}>
+      <div className="App">
+        <Menu/>
+        <GameTable/>
+        <Footer/>
+      </div>
+    </LangContext.Provider>
   );
 }
 
