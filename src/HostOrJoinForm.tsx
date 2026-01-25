@@ -8,6 +8,7 @@ import {Button, TextField} from "@mui/material";
 import PlayerAvatar from "./PlayerAvatar";
 import {useCallback, useMemo} from "react";
 import genRandomPlayerName from "./util/genRandomPlayerName";
+import {useNavigate} from "react-router-dom";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -34,6 +35,8 @@ function HostTab(props: {
   feelsLucky: () => void;
 }) {
   const t = useT();
+  const navigate = useNavigate();
+
   const {
     playerName,
     playerNameForAvatar,
@@ -107,7 +110,7 @@ function HostTab(props: {
           onChange={(e) => setImpostorsText(e.target.value)}
           helperText={t('min_players_hint')(impostors)}
         />
-        <Button variant="contained">{t('host')}</Button>
+        <Button variant="contained" onClick={() => navigate('/play')}>{t('host')}</Button>
       </Box>
     </Box>
   );
@@ -194,6 +197,7 @@ export default function HostOrJoinForm() {
   return (
     <Card elevation={8} variant="outlined" sx={{
       borderRadius: 4,
+      py: 0,
     }}>
       <BasicTabs
         tabs={[

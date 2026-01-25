@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, Button, Dialog, Typography} from "@mui/material";
 import CircularPlayerAvatarStack from "./CircularPlayerAvatarStack";
 import {useT} from "./i18n/useLangContext";
+import {useNavigate} from "react-router-dom";
 
 export default function PartyDialog(props: {
   open: boolean;
@@ -10,6 +11,7 @@ export default function PartyDialog(props: {
   playingPlayers: string[];
 }) {
   const t = useT();
+  const navigate = useNavigate();
   return (
     <Dialog
       open={props.open}
@@ -38,7 +40,7 @@ export default function PartyDialog(props: {
         <Typography variant="h6" component="div" color="primary.contrastText">
           {t('n_players_playing')(props.playingPlayers.length)}
         </Typography>
-        <Button variant="contained" color="error" sx={{ mt: 4 }}>{t('leave')}</Button>
+        <Button variant="contained" color="error" sx={{ mt: 4 }} onClick={() => navigate('/')}>{t('leave')}</Button>
       </Box>
     </Dialog>
   )
