@@ -24,6 +24,7 @@ export const Footer = () => {
              sx={{
                justifyContent: 'center',
                fontSize: 10,
+               textTransform: 'uppercase',
              }}
       >
         <Link underline="hover" color="textSecondary" href="/">

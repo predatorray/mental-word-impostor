@@ -3,8 +3,11 @@ import {Translations} from '../translations.type';
 const ZhTWTranslations: Translations = {
   'lang': '繁體中文',
   'project_name': '誰是臥底',
+  'project_description': '一款社交推理遊戲。你需要在人群中找出那個不知道秘密字詞的「臥底」，或者如果你就是那個「臥底」，請巧妙地掩飾身份並猜出那個詞！',
   'author': '作者',
   'license': '許可',
+  'host': '創建',
+  'join': '加入',
   'new_game': '新遊戲',
   'leave': '離開',
   'hover_to_reveal': '懸停以顯示單字',

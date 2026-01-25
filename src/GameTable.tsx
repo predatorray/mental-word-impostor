@@ -8,23 +8,25 @@ export default function GameTable() {
   const words = t('words');
   const offset = useMemo(() => Math.floor(Math.random() * words.length), [words.length]);
   const word = useMemo(() => words[offset], [words, offset]);
-  return <Container component="main" maxWidth="sm" sx={{
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    height: 'calc(100dvh - 72px)',
-  }}>
-    <Box sx={{
-      display: 'flex',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      gap: 10,
-      mx: 5,
+  return (
+    <Container component="main" maxWidth="sm" sx={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      height: 'calc(100dvh - 72px)',
     }}>
-      <WordCard word={word}/>
-      <Box>
-        <Button variant="outlined" color="error">{t('new_game')}</Button>
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        gap: 10,
+        mx: 5,
+      }}>
+        <WordCard word={word}/>
+        <Box>
+          <Button variant="outlined" color="error">{t('new_game')}</Button>
+        </Box>
       </Box>
-    </Box>
-  </Container>
+    </Container>
+  );
 }

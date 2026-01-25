@@ -1,8 +1,11 @@
 const BaseStringsInEnglish = {
   'lang': 'English (US)',
   'project_name': 'Mental Word Impostor',
+  'project_description': 'A social deduction game where you must find the impostor among you who doesn\'t know the secret word, or if you are the impostor, blend in and figure it out!',
   'author': 'Author',
   'license': 'License',
+  'host': 'Host',
+  'join': 'Join',
   'new_game': 'New Game',
   'leave': 'Leave',
   'hover_to_reveal': 'Hover to reveal the word',

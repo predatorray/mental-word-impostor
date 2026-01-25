@@ -23,4 +23,6 @@ code {
 
     background: #fff;
     background: linear-gradient(#fff 0%, rgb(204, 230, 255) 100%);
+
+    text-align: center;
 }

@@ -3,8 +3,11 @@ import {Translations} from '../translations.type';
 const ZhCNTranslations: Translations = {
   'lang': '简体中文',
   'project_name': '谁是卧底',
+  'project_description': '一款社交推理游戏。你需要在人群中找出那个不知道秘密词语的“卧底”，或者如果你就是那个“卧底”，请巧妙地掩饰身份并猜出那个词！',
   'author': '作者',
   'license': '许可',
+  'host': '创建',
+  'join': '加入',
   'new_game': '新游戏',
   'leave': '离开',
   'hover_to_reveal': '悬停以显示单词',
