@@ -7,7 +7,7 @@ import {useT} from "./i18n/useLangContext";
 import {Button, TextField} from "@mui/material";
 import PlayerAvatar from "./PlayerAvatar";
 import {useCallback, useMemo} from "react";
-import genRandomString from "./util/genRandomString";
+import genRandomPlayerName from "./util/genRandomPlayerName";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -80,6 +80,7 @@ function HostTab(props: {
           name="playerName"
           type="text"
           required
+          autoFocus
           fullWidth
           variant="outlined"
           color={playerName ? 'primary' : 'error'}
@@ -161,6 +162,7 @@ function JoinTab(props: {
           name="playerName"
           type="text"
           required
+          autoFocus
           fullWidth
           variant="outlined"
           color={playerName ? 'primary' : 'error'}
@@ -177,14 +179,17 @@ function JoinTab(props: {
 export default function HostOrJoinForm() {
   const t = useT();
 
-  const [playerName, setPlayerName] = React.useState('');
+  const [playerName, setPlayerName] = React.useState(genRandomPlayerName());
   const [avatarSalt, setAvatarSalt] = React.useState('');
   const changePlayerName = useCallback((name: string) => {
     setPlayerName(name);
     setAvatarSalt('');
   }, []);
   const playerNameForAvatar = useMemo(() => playerName + avatarSalt, [playerName, avatarSalt]);
-  const feelsLucky = useCallback(() => playerName && setAvatarSalt(genRandomString()), [playerName]);
+  const feelsLucky = useCallback(() => {
+    setPlayerName(genRandomPlayerName());
+    setAvatarSalt('');
+  }, []);
 
   return (
     <Card elevation={8} variant="outlined" sx={{
