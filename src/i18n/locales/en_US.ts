@@ -10,7 +10,7 @@ const BaseStringsInEnglish = {
   'leave': 'Leave',
   'form_label_number_of_impostors': 'Impostors',
   'form_label_player_name': 'Player\'s Name',
-  'hover_to_reveal': 'Hover to reveal the word',
+  'hover_to_reveal': 'Press and hold to reveal the word',
   'you_are_the_impostor': 'You\'re the Impostor',
   'impostor_hint': 'Pay close attention to clues given by others,<br/>and use them to shape your own.',
   'n_players_joined': (n: number) => `${n} players joined`,

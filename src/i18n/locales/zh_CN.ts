@@ -12,7 +12,7 @@ const ZhCNTranslations: Translations = {
   'leave': '离开',
   'form_label_number_of_impostors': '卧底数量',
   'form_label_player_name': '玩家名称',
-  'hover_to_reveal': '悬停以显示单词',
+  'hover_to_reveal': '按住以显示单词',
   'you_are_the_impostor': '你是卧底',
   'impostor_hint': '仔细听取他人的线索，<br/>完善你的描述。',
   'n_players_joined': (n: number) => `${n}位玩家已加入`,
