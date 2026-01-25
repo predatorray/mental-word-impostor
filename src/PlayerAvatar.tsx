@@ -1,15 +1,28 @@
 import React from "react";
 import RipplingAvatar from "./RipplingAvatar";
 import multiavatar from "@multiavatar/multiavatar";
-import {Avatar, Badge} from "@mui/material";
+import {Avatar, AvatarProps, Badge} from "@mui/material";
 import PendingIcon from '@mui/icons-material/Pending';
 
-export default function PlayerAvatar(props: {
+interface PlayerAvatarProps extends AvatarProps {
   player: string;
   status?: 'active' | 'inactive';
-}) {
-  const svgCode = multiavatar(props.player);
-  if (props.status === 'active') {
+  width?: number;
+  height?: number;
+}
+
+export default function PlayerAvatar(props: PlayerAvatarProps) {
+  const {
+    player,
+    status,
+    width: propWidth,
+    height: propHeight,
+    ...avatarProps
+  } = props;
+  const width = propWidth ?? 50;
+  const height = propHeight ?? 50;
+  const svgCode = multiavatar(player);
+  if (status === 'active') {
     return (
       <Badge
         overlap="circular"
@@ -33,13 +46,14 @@ export default function PlayerAvatar(props: {
         }}
       >
         <RipplingAvatar
-          alt={props.player}
+          alt={player}
           src={`data:image/svg+xml;utf8,${encodeURIComponent(svgCode)}`}
-          sx={{ width: 50, height: 50 }}
+          {...avatarProps}
+          sx={{ width, height, ...avatarProps.sx }}
         />
       </Badge>
     );
-  } else if (props.status === 'inactive') {
+  } else if (status === 'inactive') {
     return (
       <Badge
         overlap="circular"
@@ -47,18 +61,20 @@ export default function PlayerAvatar(props: {
         badgeContent={<PendingIcon sx={{ color: 'white', width: 16, height: 16 }}/>}
       >
         <Avatar
-          alt={props.player}
+          alt={player}
           src={`data:image/svg+xml;utf8,${encodeURIComponent(svgCode)}`}
-          sx={{ width: 50, height: 50 }}
+          {...avatarProps}
+          sx={{ width, height, ...avatarProps.sx }}
         />
       </Badge>
     );
   } else {
     return (
       <Avatar
-        alt={props.player}
+        alt={player}
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgCode)}`}
-        sx={{ width: 50, height: 50 }}
+        {...avatarProps}
+        sx={{ width, height, ...avatarProps.sx }}
       />
     );
   }

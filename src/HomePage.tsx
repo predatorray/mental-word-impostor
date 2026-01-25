@@ -4,10 +4,16 @@ import HostOrJoinForm from "./HostOrJoinForm";
 import LanguagePreferenceButton from "./LanguagePreferenceButton";
 import GlobalButtons from "./GlobalButtons";
 import Introduction from "./Introduction";
+import {Footer} from "./Footer";
 
 export default function HomePage() {
   return (
-    <>
+    <Stack
+      direction="column"
+      sx={{
+        minHeight: '100dvh',
+      }}
+    >
       <GlobalButtons>
         <LanguagePreferenceButton/>
       </GlobalButtons>
@@ -15,10 +21,10 @@ export default function HomePage() {
         direction="column"
         component="main"
         sx={{
-          height: '100dvh',
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          flexGrow: 1,
         }}
       >
         <Stack
@@ -44,6 +50,7 @@ export default function HomePage() {
           </Stack>
         </Stack>
       </Stack>
-    </>
+      <Footer hideProjectName sx={{ mb: 2 }} />
+    </Stack>
   )
 }

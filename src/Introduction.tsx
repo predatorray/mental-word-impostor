@@ -19,14 +19,14 @@ export default function Introduction() {
       gap: 2,
     }}>
       <Typography variant="h1" sx={{
-        fontSize: 36,
+        fontSize: 30,
         fontWeight: 900,
       }}
       >
         {t('project_name')}
       </Typography>
-      <Typography variant="body1" sx={{
-        fontSize: 18,
+      <Typography variant="body2" sx={{
+        fontSize: 14,
         color: 'text.secondary',
         maxWidth: 400,
       }}>

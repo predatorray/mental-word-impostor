@@ -4,6 +4,10 @@ import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import BasicTabs from "./BasicTabs";
 import {useT} from "./i18n/useLangContext";
+import {Button, TextField} from "@mui/material";
+import PlayerAvatar from "./PlayerAvatar";
+import {useCallback, useMemo} from "react";
+import genRandomString from "./util/genRandomString";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -23,31 +27,192 @@ const Card = styled(MuiCard)(({ theme }) => ({
   }),
 }));
 
-function HostTab() {
+function HostTab(props: {
+  playerName: string;
+  playerNameForAvatar: string;
+  changePlayerName: (name: string) => void;
+  feelsLucky: () => void;
+}) {
+  const t = useT();
+  const {
+    playerName,
+    playerNameForAvatar,
+    changePlayerName,
+    feelsLucky,
+  } = props;
+
+  const [impostorsText, setImpostorsText] = React.useState('1');
+  const impostors = useMemo(() => Number(impostorsText), [impostorsText]);
+
   return (
-    <Box sx={{ height: '60dvh' }}>
+    <Box>
+      <Box
+        component="form"
+        noValidate
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          gap: 2,
+          justifyContent: 'space-between',
+          height: '100%',
+          pt: 2,
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <PlayerAvatar
+            player={playerNameForAvatar}
+            width={100}
+            height={100}
+            onClick={feelsLucky}
+            sx={{
+              my: 1,
+              'cursor': 'pointer',
+            }}
+          />
+        </Box>
+        <TextField
+          name="playerName"
+          type="text"
+          required
+          fullWidth
+          variant="outlined"
+          color={playerName ? 'primary' : 'error'}
+          label={t('form_label_player_name')}
+          value={playerName}
+          onChange={(e) => changePlayerName(e.target.value)}
+        />
+        <TextField
+          name="impostors"
+          type="number"
+          slotProps={{
+            htmlInput: {
+              min: 1,
+            },
+          }}
+          defaultValue={1}
+          autoComplete="number"
+          required
+          fullWidth
+          variant="outlined"
+          color={impostors > 0 ? 'primary' : 'error'}
+          label={t('form_label_number_of_impostors')}
+          value={impostorsText}
+          onChange={(e) => setImpostorsText(e.target.value)}
+          helperText={t('min_players_hint')(impostors)}
+        />
+        <Button variant="contained">{t('host')}</Button>
+      </Box>
     </Box>
   );
 }
 
-function JoinTab() {
+function JoinTab(props: {
+  playerName: string;
+  playerNameForAvatar: string;
+  changePlayerName: (name: string) => void;
+  feelsLucky: () => void;
+}) {
+  const {
+    playerName,
+    playerNameForAvatar,
+    changePlayerName,
+    feelsLucky,
+  } = props;
+  const t = useT();
   return (
-    <Box sx={{ height: '60dvh' }}>
-      Join a game
+    <Box>
+      <Box
+        component="form"
+        noValidate
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          gap: 2,
+          justifyContent: 'space-between',
+          height: '100%',
+          pt: 2,
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <PlayerAvatar
+            player={playerNameForAvatar}
+            width={100}
+            height={100}
+            onClick={feelsLucky}
+            sx={{
+              my: 1,
+              'cursor': 'pointer',
+            }}
+          />
+        </Box>
+        <TextField
+          name="playerName"
+          type="text"
+          required
+          fullWidth
+          variant="outlined"
+          color={playerName ? 'primary' : 'error'}
+          label={t('form_label_player_name')}
+          value={playerName}
+          onChange={(e) => changePlayerName(e.target.value)}
+        />
+        <Button variant="contained">{t('join')}</Button>
+      </Box>
     </Box>
   )
 }
 
 export default function HostOrJoinForm() {
   const t = useT();
+
+  const [playerName, setPlayerName] = React.useState('');
+  const [avatarSalt, setAvatarSalt] = React.useState('');
+  const changePlayerName = useCallback((name: string) => {
+    setPlayerName(name);
+    setAvatarSalt('');
+  }, []);
+  const playerNameForAvatar = useMemo(() => playerName + avatarSalt, [playerName, avatarSalt]);
+  const feelsLucky = useCallback(() => playerName && setAvatarSalt(genRandomString()), [playerName]);
+
   return (
     <Card elevation={8} variant="outlined" sx={{
       borderRadius: 4,
     }}>
       <BasicTabs
         tabs={[
-          { label: t('host'), content: <HostTab/> },
-          { label: t('join'), content: <JoinTab/> },
+          {
+            label: t('host'),
+            content: (
+              <HostTab
+                playerName={playerName}
+                playerNameForAvatar={playerNameForAvatar}
+                changePlayerName={changePlayerName}
+                feelsLucky={feelsLucky}
+              />
+            )
+          },
+          {
+            label: t('join'),
+            content: (
+              <JoinTab
+                playerName={playerName}
+                playerNameForAvatar={playerNameForAvatar}
+                changePlayerName={changePlayerName}
+                feelsLucky={feelsLucky}/>
+            )
+          },
         ]}
       />
     </Card>
