@@ -4,11 +4,16 @@ import CircularPlayerAvatarStack from "./CircularPlayerAvatarStack";
 import {useT} from "./i18n/useLangContext";
 import {useNavigate} from "react-router-dom";
 
+export interface Player {
+  id: string;
+  name: string;
+  active?: boolean;
+}
+
 export default function PartyDialog(props: {
   open: boolean;
   onClose: () => void;
-  joinedPlayers: string[];
-  playingPlayers: string[];
+  players: Player[];
 }) {
   const t = useT();
   const navigate = useNavigate();
@@ -30,15 +35,14 @@ export default function PartyDialog(props: {
     >
       <CircularPlayerAvatarStack
         onClick={() => props.onClose()}
-        players={props.joinedPlayers}
-        activePlayer={props.playingPlayers}
+        players={props.players}
       />
       <Box sx={{ mt: 6, textAlign: 'center' }}>
         <Typography variant="h6" component="div" color="primary.contrastText">
-          {t('n_players_joined')(props.joinedPlayers.length)}
+          {t('n_players_joined')(props.players.length)}
         </Typography>
         <Typography variant="h6" component="div" color="primary.contrastText">
-          {t('n_players_playing')(props.playingPlayers.length)}
+          {t('n_players_playing')(props.players.filter(({active}) => !!active).length)}
         </Typography>
         <Button variant="contained" color="error" sx={{ mt: 4 }} onClick={() => navigate('/')}>{t('leave')}</Button>
       </Box>

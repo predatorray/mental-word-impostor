@@ -70,7 +70,7 @@ function HostTab(props: {
           }}
         >
           <PlayerAvatar
-            player={playerNameForAvatar}
+            playerId={playerNameForAvatar}
             width={100}
             height={100}
             onClick={feelsLucky}
@@ -155,7 +155,7 @@ function JoinTab(props: {
           }}
         >
           <PlayerAvatar
-            player={playerNameForAvatar}
+            playerId={playerNameForAvatar}
             width={100}
             height={100}
             onClick={feelsLucky}

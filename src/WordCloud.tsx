@@ -1,23 +1,29 @@
-import {Box, Chip} from "@mui/material";
+import {Box, BoxProps, Chip} from "@mui/material";
 import React from "react";
 
-export default function WordCloud(props: {
+interface WordCloudProps extends BoxProps {
   words: string[];
-}) {
+}
+
+export default function WordCloud(props: WordCloudProps) {
+  const { words, sx, ...other } = props;
   const radiusBase = 120; // Base radius for the circle
 
   return (
-    <Box sx={{
-      position: 'relative',
-      width: 400,
-      height: 300,
-      mt: 4,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-      {props.words.map((word, index) => {
-        const total = props.words.length;
+    <Box
+      sx={{
+        position: 'relative',
+        width: 400,
+        height: 300,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...sx,
+      }}
+      {...other}
+    >
+      {words.map((word, index) => {
+        const total = words.length;
         // Create a spiral/circular distribution using Fermat's spiral or similar logic
         const phi = (Math.sqrt(5) + 1) / 2; // Golden ratio
         const angle = index * 2 * Math.PI * phi;
@@ -39,7 +45,7 @@ export default function WordCloud(props: {
               fontWeight: index % 3 === 0 ? 'bold' : 'normal',
               opacity: 0.6 + (index % 4) * 0.1,
               backgroundColor: 'background.paper',
-              zIndex: props.words.length - index,
+              zIndex: words.length - index,
               transition: 'all 0.3s ease',
               '&:hover': {
                 zIndex: 100,
@@ -50,5 +56,5 @@ export default function WordCloud(props: {
         );
       })}
     </Box>
-  )
+  );
 }

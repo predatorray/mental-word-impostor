@@ -29,10 +29,13 @@ export default function Introduction() {
         fontSize: 14,
         color: 'text.secondary',
         maxWidth: 400,
+        mb: 4,
       }}>
         {t('project_description')}
       </Typography>
-      <WordCloud words={randomPickedWords}/>
+      <WordCloud words={randomPickedWords} sx={{
+        display: { xs: 'none', sm: 'none', md: 'flex' },
+      }}/>
     </Box>
   )
 }

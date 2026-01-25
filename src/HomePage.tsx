@@ -37,10 +37,11 @@ export default function HomePage() {
           }}
         >
           <Stack
-            direction={{ xs: 'column-reverse', md: 'row' }}
+            direction={{ xs: 'column', md: 'row' }}
             sx={{
+              foo: 'bar',
               justifyContent: 'center',
-              gap: { xs: 6, sm: 12 },
+              gap: { md: 2, lg: 12 },
               p: { xs: 2, sm: 4 },
               m: 'auto',
             }}

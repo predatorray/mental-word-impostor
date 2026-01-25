@@ -23,8 +23,31 @@ export const Menu = () => {
         <PartyDialog
           open={showsPartyDialog}
           onClose={() => setShowsPartyDialog(false)}
-          joinedPlayers={["a", "b", "c", "d", "e"]}
-          playingPlayers={["a", "b", "c"]}
+          players={[
+            {
+              id: '1',
+              name: 'Player 1',
+              active: true,
+            },
+            {
+              id: '2',
+              name: 'Player 2',
+              active: true,
+            },
+            {
+              id: '3',
+              name: 'Player 3',
+              active: true,
+            },
+            {
+              id: '4',
+              name: 'Player 4',
+            },
+            {
+              id: '5',
+              name: 'Player 5',
+            },
+          ]}
         />
 
         <IconButton size="large" color="inherit" onClick={() => setShowsInviteDialog(true)}>
