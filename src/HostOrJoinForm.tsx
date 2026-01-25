@@ -9,6 +9,7 @@ import PlayerAvatar from "./PlayerAvatar";
 import {useCallback, useMemo} from "react";
 import genRandomPlayerName from "./util/genRandomPlayerName";
 import {useNavigate} from "react-router-dom";
+import genRandomString from "./util/genRandomString";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -189,10 +190,7 @@ export default function HostOrJoinForm() {
     setAvatarSalt('');
   }, []);
   const playerNameForAvatar = useMemo(() => playerName + avatarSalt, [playerName, avatarSalt]);
-  const feelsLucky = useCallback(() => {
-    setPlayerName(genRandomPlayerName());
-    setAvatarSalt('');
-  }, []);
+  const feelsLucky = useCallback(() => playerName && setAvatarSalt(genRandomString()), [playerName]);
 
   return (
     <Card elevation={8} variant="outlined" sx={{
