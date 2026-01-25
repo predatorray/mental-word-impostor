@@ -12,6 +12,7 @@ const ZhTWTranslations: Translations = {
   'leave': '離開',
   'form_label_number_of_impostors': '臥底數量',
   'form_label_player_name': '玩家名稱',
+  'form_label_room_code': '房號',
   'hover_to_reveal': '按住以顯示單字',
   'you_are_the_impostor': '你是臥底',
   'impostor_hint': '仔細聽取他人的線索，<br/>完善你的描述。',

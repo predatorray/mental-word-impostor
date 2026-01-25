@@ -129,6 +129,9 @@ function JoinTab(props: {
     changePlayerName,
     feelsLucky,
   } = props;
+
+  const [roomCode, setRoomCode] = React.useState('');
+
   const t = useT();
   return (
     <Box>
@@ -173,6 +176,18 @@ function JoinTab(props: {
           label={t('form_label_player_name')}
           value={playerName}
           onChange={(e) => changePlayerName(e.target.value)}
+        />
+        <TextField
+          name="roomCode"
+          type="text"
+          required
+          fullWidth
+          variant="outlined"
+          color={roomCode ? 'primary' : 'error'}
+          label={t('form_label_room_code')}
+          value={roomCode}
+          onChange={(e) => setRoomCode(e.target.value)}
+          helperText={' '}
         />
         <Button variant="contained">{t('join')}</Button>
       </Box>
