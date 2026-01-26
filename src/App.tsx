@@ -1,17 +1,9 @@
 import React, {useMemo, useState} from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  Routes,
-} from 'react-router-dom';
-import {Footer} from "./Footer";
-import GameTable from "./GameTable";
 import { LangContext } from "./i18n/useLangContext";
-import {Menu} from "./Menu";
 import {DEFAULT_LOCALE} from "./i18n/translations";
 import {SupportedLanguages} from "./i18n/translations.type";
 import {CssBaseline} from "@mui/material";
-import HomePage from "./HomePage";
+import WordImpostor from "./WordImpostor";
 
 function App() {
   const [lang, setLang] = useState<SupportedLanguages>(DEFAULT_LOCALE);
@@ -20,22 +12,7 @@ function App() {
   return (
     <LangContext.Provider value={value}>
       <CssBaseline enableColorScheme />
-      <Router>
-        <Routes>
-          <Route path="/" element={
-            <>
-              <HomePage/>
-            </>
-          }/>
-          <Route path="/play" element={
-            <>
-              <Menu/>
-              <GameTable/>
-              <Footer/>
-            </>
-          }/>
-        </Routes>
-      </Router>
+      <WordImpostor/>
     </LangContext.Provider>
   );
 }
