@@ -19,6 +19,10 @@ const ZhCNTranslations: Translations = {
   'n_players_joined': (n: number) => `${n}位玩家已加入`,
   'n_players_playing': (n: number) => `${n}位玩家正在进行游戏`,
   'min_players_hint': (n: number) => `至少需要 ${n + 1} 位玩家`,
+  'divider-or': '或',
+  'label-share-link': '分享链接',
+  'copy': '复制',
+  'copied': '复制成功',
   'words': [
     '苹果',
     '谷歌',

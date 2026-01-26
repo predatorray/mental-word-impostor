@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dialog, DialogContent} from "@mui/material";
-import QRCode from "react-qr-code";
+import QrCodeInvitation from "./QrCodeInvitation";
 
 export default function InviteDialog(props: {
   open: boolean;
@@ -15,7 +15,7 @@ export default function InviteDialog(props: {
       }}
     >
       <DialogContent>
-        <QRCode value="http://localhost:3000/" />
+        <QrCodeInvitation/>
       </DialogContent>
     </Dialog>
   )

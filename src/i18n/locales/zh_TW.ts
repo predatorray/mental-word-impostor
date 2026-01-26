@@ -19,6 +19,10 @@ const ZhTWTranslations: Translations = {
   'n_players_joined': (n: number) => `${n} 位玩家已加入`,
   'n_players_playing': (n: number) => `${n} 位玩家正在進行遊戲`,
   'min_players_hint': (n: number) => `至少需要 ${n + 1} 位玩家`,
+  'divider-or': '或',
+  'label-share-link': '分享鏈接',
+  'copy': '複製',
+  'copied': '複製成功',
   'words': [
     '蘋果',
     'Google',

@@ -17,6 +17,10 @@ const BaseStringsInEnglish = {
   'n_players_joined': (n: number) => `${n} players joined`,
   'n_players_playing': (n: number) => `${n} players playing`,
   'min_players_hint': (n: number) => `Minimum players needed: ${n + 1}`,
+  'divider-or': 'or',
+  'label-share-link': 'Share Link',
+  'copy': 'copy',
+  'copied': 'copied',
   'words': [
     'Apple',
     'Google',
