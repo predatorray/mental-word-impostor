@@ -28,7 +28,10 @@ export default function Introduction() {
       <Typography variant="body2" sx={{
         fontSize: 14,
         color: 'text.secondary',
-        maxWidth: 400,
+        maxWidth: {
+          xs: '90vw',
+          sm: 400,
+        },
         mb: 4,
       }}>
         {t('project_description')}

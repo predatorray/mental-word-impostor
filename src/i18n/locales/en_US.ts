@@ -7,6 +7,7 @@ const BaseStringsInEnglish = {
   'host': 'Host',
   'join': 'Join',
   'new_game': 'New Game',
+  'start': 'Start',
   'leave': 'Leave',
   'form_label_number_of_impostors': 'Impostors',
   'form_label_player_name': 'Player\'s Name',

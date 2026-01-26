@@ -1,7 +1,7 @@
 import GlobalButtons from "./GlobalButtons";
 import LanguagePreferenceButton from "./LanguagePreferenceButton";
 import React from "react";
-import {Box, Card, Divider, Stack, Typography} from "@mui/material";
+import {Box, Button, Card, Divider, Stack, Typography} from "@mui/material";
 import CircularPlayerAvatarStack from "./CircularPlayerAvatarStack";
 import {useT} from "./i18n/useLangContext";
 import {useNavigate} from "react-router-dom";
@@ -89,6 +89,7 @@ export default function Lobby() {
               <Typography variant="h6" component="div" color="textPrimary">
                 {t('n_players_joined')(players.length)}
               </Typography>
+              <Button variant="contained" color="primary" sx={{ mt: 4 }} onClick={() => navigate('/play')}>{t('start')}</Button>
             </Box>
           </Box>
 

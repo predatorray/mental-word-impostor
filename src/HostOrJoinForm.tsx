@@ -111,7 +111,7 @@ function HostTab(props: {
           onChange={(e) => setImpostorsText(e.target.value)}
           helperText={t('min_players_hint')(impostors)}
         />
-        <Button variant="contained" onClick={() => navigate('/play')}>{t('host')}</Button>
+        <Button variant="contained" onClick={() => navigate('/lobby')}>{t('host')}</Button>
       </Box>
     </Box>
   );
@@ -209,8 +209,11 @@ export default function HostOrJoinForm() {
 
   return (
     <Card elevation={8} variant="outlined" sx={{
-      borderRadius: 4,
-      py: 0,
+      borderRadius: {
+        xs: 0,
+        sm: 4,
+      },
+      p: 0,
     }}>
       <BasicTabs
         tabs={[

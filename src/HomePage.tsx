@@ -32,17 +32,16 @@ export default function HomePage() {
           sx={{
             justifyContent: 'center',
             gap: { xs: 6, sm: 12 },
-            p: 2,
+            p: { xs: 0, sm: 0, md: 2 },
             mx: 'auto',
           }}
         >
           <Stack
             direction={{ xs: 'column', md: 'row' }}
             sx={{
-              foo: 'bar',
               justifyContent: 'center',
               gap: { md: 2, lg: 12 },
-              p: { xs: 2, sm: 4 },
+              p: { xs: 0, sm: 0, md: 4 },
               m: 'auto',
             }}
           >

@@ -9,6 +9,7 @@ const ZhTWTranslations: Translations = {
   'host': '創建',
   'join': '加入',
   'new_game': '新遊戲',
+  'start': '開始',
   'leave': '離開',
   'form_label_number_of_impostors': '臥底數量',
   'form_label_player_name': '玩家名稱',
