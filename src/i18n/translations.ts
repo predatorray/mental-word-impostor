@@ -9,6 +9,7 @@ import {
 import en_US from "./locales/en_US";
 import zh_CN from "./locales/zh_CN";
 import zh_TW from "./locales/zh_TW";
+import {getLanguagePreference} from "./LocalLanguagePreference";
 
 const TranslationsPerLang: Record<SupportedLanguages, Translations> = {
   'en': en_US,
@@ -32,7 +33,16 @@ export const DEFAULT_LOCALE: SupportedLanguages = (() => {
     }
   }
 
-  // 2. Then, use browser's preference
+  // 2. Then, user preference
+  const langPreferred = getLanguagePreference();
+  if (langPreferred) {
+    const supportedLanguagePreferred = supportLanguage(langPreferred);
+    if (supportedLanguagePreferred) {
+      return supportedLanguagePreferred;
+    }
+  }
+
+  // 3. Then, use browser's preference
   const browserLanguages = navigator.languages || [navigator.language];
   for (const lang of browserLanguages) {
     const maybeSupported = supportLanguage(lang);
@@ -47,7 +57,7 @@ export const DEFAULT_LOCALE: SupportedLanguages = (() => {
     }
   }
 
-  // 3. Otherwise, use english
+  // 4. Otherwise, use english
   return 'en';
 })();
 

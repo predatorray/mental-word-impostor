@@ -3,6 +3,7 @@ import {ListItemIcon, ListItemText, MenuList, MenuItem, Typography, Menu, MenuPr
 import CountryFlag from "./CountryFlag";
 import {SupportedLanguages} from "./translations.type";
 import useLangContext, {useT} from "./useLangContext";
+import {setLanguagePreference} from "./LocalLanguagePreference";
 
 const langs: { [K in SupportedLanguages]?: { code: string } } = {
   'en-US': {
@@ -45,6 +46,7 @@ export default function LanguageMenu(props: {
             selected={lang === currentLang}
             onClick={() => {
               setLang(lang as SupportedLanguages);
+              setLanguagePreference(lang)
               props.onClose?.({}, 'backdropClick');
             }}
           >
