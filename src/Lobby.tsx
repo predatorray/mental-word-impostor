@@ -117,7 +117,7 @@ export default function Lobby() {
           </Box>
         </Stack>
       </Stack>
-      <Footer hideProjectName sx={{ mb: 2 }} />
+      <Footer sx={{ mb: 2 }} />
     </Stack>
   );
 }

@@ -23,9 +23,7 @@ export const Footer = (props: {
           fontWeight: 600,
           mb: 1
         }}>
-          <Link underline="hover" href="/" sx={{
-            color: 'black',
-          }}>{t('project_name')}</Link>
+          {t('project_name')}
         </Typography>
       }
 
