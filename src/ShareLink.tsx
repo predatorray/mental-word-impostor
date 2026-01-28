@@ -1,6 +1,7 @@
 import {Box, Button, InputAdornment, TextField} from "@mui/material";
 import LinkIcon from "@mui/icons-material/Link";
 import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 import React, {useCallback, useState} from "react";
 import {useT} from "./i18n/useLangContext";
 import useTimeout from "./util/useTimeout";
@@ -10,15 +11,21 @@ export default function ShareLink() {
 
   const link = 'http://localhost:3000';
 
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<boolean | null>(null);
   useTimeout(useCallback(() => {
-    if (copied) {
-      setCopied(false);
+    if (copied !== null) {
+      setCopied(null);
     }
   }, [copied]), 1000);
 
   const copy = () => {
-    navigator.clipboard.writeText(link).then(() => setCopied(true));
+    if (!navigator.clipboard) {
+      setCopied(false);
+    } else {
+      navigator.clipboard.writeText(link)
+        .then(() => setCopied(true))
+        .catch(() => setCopied(false));
+    }
   };
 
   return (
@@ -81,7 +88,12 @@ export default function ShareLink() {
             sm: 2,
             md: 'auto',
           },
-        }}>{copied ? <CheckIcon/> : t('copy')}</Button>
+        }}>
+        {
+          copied === null
+            ? t('copy')
+            : copied ? <CheckIcon/> : <CloseIcon/>
+        }</Button>
     </Box>
   )
 }
