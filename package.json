@@ -16,6 +16,7 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
+    "mental-poker-toolkit": "^1.0.1",
     "peerjs": "^1.5.5",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
